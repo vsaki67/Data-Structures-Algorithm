@@ -7,24 +7,23 @@ import java.util.LinkedList;
 		Collection c = new LinkedList();
 		c.add("2"); 
         	c.add("6"); 
-	        c.add("5"); 
+        	c.add("5"); 
         	c.add("10"); 
         	c.add("20");  //adding elements
 		
 		System.out.println("Is the collection empty ?"+ c.isEmpty()); //is empty
-		
 		System.out.println("Size :"+  c.size());
 		
 		System.out.println("Elements = "+ c);
 		
+		int elementToCheck = 40;
+        	System.out.println("Does the collection contain " + elementToCheck + "? " + c.contains(elementToCheck));
+		
 		c.remove("10"); // removing an element 
 		System.out.println("After removing an element = "+ c);
-
-		int elementToCheck = 30;
-       		System.out.println("Does the collection contain " + elementToCheck + "? " + c.contains(elementToCheck));
 	}
 	
 	public static void main(String[] args){
-		new CollectionPractical1();
+		new CollectionPractical1();	
 	}
 }
