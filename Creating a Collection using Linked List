@@ -1,0 +1,30 @@
+import java.util.Collection;
+import java.util.LinkedList;
+
+ class CollectionPractical1{
+	
+	public CollectionPractical1(){
+		Collection c = new LinkedList();
+		c.add("2"); 
+        c.add("6"); 
+        c.add("5"); 
+        c.add("10"); 
+        c.add("20");  //adding elements
+		
+		System.out.println("Is the collection empty ?"+ c.isEmpty()); //is empty
+		
+		System.out.println("Size :"+  c.size());
+		
+		System.out.println("Elements = "+ c);
+		
+		c.remove("10"); // removing an element 
+		
+		System.out.println("After removing an element = "+ c);
+	}
+	
+	public static void main(String[] args){
+		new CollectionPractical1();
+		
+	}
+
+}
