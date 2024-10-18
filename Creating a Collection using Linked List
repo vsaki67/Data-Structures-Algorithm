@@ -18,8 +18,10 @@ import java.util.LinkedList;
 		System.out.println("Elements = "+ c);
 		
 		c.remove("10"); // removing an element 
-		
 		System.out.println("After removing an element = "+ c);
+
+		int elementToCheck = 30;
+       		System.out.println("Does the collection contain " + elementToCheck + "? " + c.contains(elementToCheck));
 	}
 	
 	public static void main(String[] args){
