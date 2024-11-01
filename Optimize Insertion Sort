@@ -2,7 +2,6 @@ import java.util.Arrays;
 
 public class OptimizeInsertionSort{
 	
-	//static Integer[] array = {21,16,13,9,6};
 	static Integer[] array = {76, 6, 107, 92, 21, 23, 5, 9, 8, 8143};
 	static int outerIndex;
 	static int temp;
@@ -22,7 +21,6 @@ public class OptimizeInsertionSort{
 					+ " Array State:" 
 					+ Arrays.deepToString(array)
 			);
-		
 		}
 		return i;
 	}
