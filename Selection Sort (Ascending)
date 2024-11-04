@@ -1,0 +1,51 @@
+import java.util.Arrays;
+
+public class SelectionSortTest {
+    Integer[] a;
+
+    public SelectionSortTest(Integer[] a) { //Constructor
+        this.a = a;
+    }
+
+    public void swap(int i, int j) { 
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    public void selectionsort() { 
+		int n = a.length;
+        for (int i = 0; i < n - 1; i++) {
+            int min_index = i;
+            for (int j = i + 1; j < n; j++) {
+                if (a[j] < a[min_index]) {
+                    min_index = j;
+                }
+                System.out.println(
+                        "i = " 
+						+ i 
+						+ "; j = " 
+						+ j 
+						+ "; current_min = " 
+						+ a[min_index] 
+						+ ";" 
+						+ Arrays.deepToString(a)
+                );
+            }
+            swap(i, min_index);
+        }
+    }
+
+    public static void main(String[] args) {
+		
+        //Integer[] array = {5, 78, 190, 6, 2}; 
+		Integer[] array = {76, 6, 107, 92, 21, 23, 5, 9, 8, 8143};
+        SelectionSortTest sorter = new SelectionSortTest(array); // Create an instance
+        
+        System.out.println("\nArray before sorting: " + Arrays.deepToString(sorter.a) + "\n");
+        
+        sorter.selectionsort(); // Call the method on the instance
+        
+        System.out.println("\nArray after sorting: " + Arrays.deepToString(sorter.a));
+    }
+}
