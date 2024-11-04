@@ -1,0 +1,54 @@
+import java.util.Arrays;
+
+public class SelectionSortTestMax {
+	
+    Integer[] array;
+
+    public SelectionSortTestMax(Integer[] array) { //Constructor
+        this.array = array;
+    }
+
+    public void swap(int i, int j) { 
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public void selectionsort() { 
+	
+		int n = array.length;
+		
+        for (int i = 0; i < n - 1; i++) {
+            int max_index = i; //variable name changed
+            for (int j = i + 1; j < n; j++) {
+                if (array[j] > array[max_index]) { // sign > changed
+                    max_index = j;
+                }
+                System.out.println(
+                        "i = " 
+						+ i 
+						+ "; j = " 
+						+ j 
+						+ "; current_max = " 
+						+ array[max_index] 
+						+ ";" 
+						+ Arrays.deepToString(array)
+                );
+            }
+            swap(max_index, i);
+        }
+    }
+
+    public static void main(String[] args) {
+		
+        //Integer[] arrays = {5, 78, 190, 6, 2}; 
+		Integer[] arrays = {76, 6, 107, 92, 21, 23, 5, 9, 8, 8143};
+        SelectionSortTestMax sorter = new SelectionSortTestMax(arrays); // Create an instance
+        
+        System.out.println("\nArray before sorting: " + Arrays.deepToString(arrays) + "\n");
+        
+        sorter.selectionsort(); // Call the method on the instance
+        
+        System.out.println("\nArray after sorting: " + Arrays.deepToString(arrays));
+    }
+}
