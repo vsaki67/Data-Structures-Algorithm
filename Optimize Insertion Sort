@@ -44,6 +44,7 @@ public class OptimizeInsertionSort{
 	}
 	
 	public static void main(String args[]){
+
 		System.out.println("\nArray before sorting:" + Arrays.deepToString(array)+"\n");
 		
 		insertionSort();
