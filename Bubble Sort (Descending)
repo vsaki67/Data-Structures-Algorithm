@@ -1,0 +1,48 @@
+import java.util.Arrays;
+
+public class BubbleSortTest {
+    
+    class BubbleSort {
+        
+        public void swap(Integer[] array, int i, int j) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        
+        public void bubbleSort(Integer[] array) {
+            int n = array.length;
+            
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 0; j < n - i - 1; j++) { 
+				
+                    if (array[j] < array[j + 1]) {
+                        swap(array, j, j + 1);
+                    }
+					System.out.println(
+						"i = "
+						+ (i+1)
+						+ "; j = "
+						+ (j + 1)
+		 				+ "; "
+						+ Arrays.deepToString(array)
+					);
+                }
+            }    
+        }
+    }
+
+    public static void main(String[] args) {
+		
+        BubbleSortTest lab = new BubbleSortTest();
+        BubbleSort object = lab.new BubbleSort();  
+        
+        Integer[] numbers = {8, 3, 1, 4, 5, 11, 7, 2, 17, 13};
+		
+        System.out.println("\nArray Before Sorting:"+ Arrays.deepToString(numbers)+ "\n");
+        
+        object.bubbleSort(numbers);
+        
+        System.out.println("\nArray After sorting:"+ Arrays.deepToString(numbers)+ "\n");
+    }
+}
