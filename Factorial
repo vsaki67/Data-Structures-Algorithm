@@ -1,0 +1,25 @@
+public class FindFactorial{
+	
+	//method to find the factorial
+	public int factorial(int n){
+
+		if( n == 1 )
+			return 1;
+		else
+			return n * factorial(n-1); //recursive method
+	}
+	
+	public static void main(String []args){
+		
+		FindFactorial obj = new FindFactorial();
+		int result = obj.factorial(10);
+		
+		int result = factorial(10);
+		
+		//int mynum = 127 + 2;
+		//System.out.println("Factorial is " + mynum);
+		
+		System.out.println("Factorial is " + result);
+	}
+}
+
