@@ -1,0 +1,26 @@
+public class HanoiPractical{
+	
+	//src = source
+	//des = destination
+	//aux = auxilary
+	//n =  no.of discs
+	
+	public static void hanoiMeth(String src, String des, String aux, int n){
+		if ( n == 1 ){
+			System.out.println(src + "->" + des);
+		}
+		else
+		{	
+			hanoiMeth(src,aux,des,n-1);
+			
+			hanoiMeth(src, des, aux, 1);
+			
+			hanoiMeth(aux, des, src, n-1);
+		}
+	}
+	
+	public static void main(String []args){
+		
+		hanoiMeth("A","B","C", 4);
+	}
+}
