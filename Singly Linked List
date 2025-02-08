@@ -1,0 +1,132 @@
+public class SinglyLinkedList 
+{
+    // Constructor for the SinglyLinkedList class
+    public SinglyLinkedList() 
+    {
+        this.head = null;
+    }
+
+    // Node class represents a node in the linked list
+    static class Node 
+    {
+        int data;
+        Node next;
+
+        // Constructor
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    // Head node of the linked list
+    Node head;
+
+    // Method to insert a new node at the end of the list
+    public void insert(int data) 
+    {
+        Node newNode = new Node(data);
+        
+        if (head == null) {
+            head = newNode; // If the list is empty, set the new node as the head
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next; // Traverse to the last node
+            }
+            current.next = newNode; // Link the new node at the end
+        }
+    }
+
+    // Display
+    public void display() 
+    {
+        if (head == null) {
+            System.out.println("The list is empty.");
+            return;
+        }
+        
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null"); // Indicating the end of the list
+    }
+
+    // Delete the first occurrence of a specific value
+    public void delete(int value) 
+    {
+        if (head == null) {
+            System.out.println("The list is empty.");
+            return;
+        }
+
+        // If the head node itself holds the value to be deleted
+        if (head.data == value) {
+            head = head.next; // Move the head to the next node
+            return;
+        }
+
+        // Traverse the list to find the node with the given value
+        Node current = head;
+        Node previous = null;
+
+        while (current != null && current.data != value) {
+            previous = current;
+            current = current.next;
+        }
+
+        // If the value is found
+        if (current != null) {
+            previous.next = current.next; // Remove the node from the list
+        } else {
+            System.out.println("Value not found in the list.");
+        }
+    }
+
+    // Search for a value in the list
+    public boolean search(int value) 
+    {
+        Node current = head;
+        while (current != null) {
+            if (current.data == value) {
+                return true; // Value found
+            }
+            current = current.next;
+        }
+        return false; // Value not found
+    }
+
+
+    public static void main(String[] args) 
+    {
+        
+        SinglyLinkedList list = new SinglyLinkedList();
+
+        // Inserting elements into the linked list
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.insert(40);
+        list.insert(50);
+
+        // Display the linked list
+        System.out.println("Singly Linked List:");
+        list.display(); // Output: 10 -> 20 -> 30 -> 40 -> 50 -> null
+
+        // Search for a value
+        System.out.println("Is 30 in the list? " + list.search(30)); // Output: true
+        System.out.println("Is 100 in the list? " + list.search(100)); // Output: false
+
+        // Delete a value
+        System.out.println("Deleting 30 from the list.");
+        list.delete(30);
+        list.display(); // Output: 10 -> 20 -> 40 -> 50 -> null
+
+        // Delete a value that doesn't exist
+        System.out.println("Deleting 100 from the list.");
+        list.delete(100); // Output: Value not found in the list.
+        list.display(); // Output: 10 -> 20 -> 40 -> 50 -> null
+    }
+}
