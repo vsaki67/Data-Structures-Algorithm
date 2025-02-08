@@ -1,0 +1,44 @@
+class CompleteBinaryTree 
+{
+    int[] tree;
+    int size;
+
+    public CompleteBinaryTree(int capacity) 
+    {
+        tree = new int[capacity];
+        size = 0;
+    }
+
+    void insert(int value) 
+    {
+        if (size == tree.length) {
+            System.out.println("Tree is full!");
+            return;
+        }
+        tree[size] = value;
+        size++;
+    }
+
+    void printTree() 
+    {
+        for (int i = 0; i < size; i++)
+            System.out.print(tree[i] + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) 
+    {
+        CompleteBinaryTree cbt = new CompleteBinaryTree(10);
+        
+        cbt.insert(10);
+        cbt.insert(20);
+        cbt.insert(30);
+        cbt.insert(40);
+        cbt.insert(50);
+        cbt.insert(60);
+        cbt.insert(70);
+
+        System.out.print("Complete Binary Tree in array: ");
+        cbt.printTree();
+    }
+}
