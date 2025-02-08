@@ -1,0 +1,91 @@
+public class Stack 
+{
+    // Constructor for the Stack class
+    public Stack() 
+    {
+        this.top = null;
+    }
+    
+    private Node top;
+
+    // Node class represents each node in the stack
+    private static class Node 
+    {
+        int data;
+        Node next;
+
+        // Constructor
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    // Push method to add an element to the stack
+    public void push(int data) 
+    {
+        Node newNode = new Node(data);
+        newNode.next = top;
+        top = newNode; // The new node becomes the top of the stack
+    }
+
+    // Pop method to remove and return the top element from the stack
+    public int pop() 
+    {
+        if (top == null) {
+            System.out.println("Stack is empty.");
+            return -1; // Stack underflow condition
+        }
+        int poppedData = top.data;
+        top = top.next; // Move the top pointer to the next node
+        return poppedData;
+    }
+
+    // Peek method to get the top element without removing it
+    public int peek() 
+    {
+        if (top == null) {
+            System.out.println("Stack is empty.");
+            return -1;
+        }
+        return top.data;
+    }
+
+    // Check if the stack is empty
+    public boolean isEmpty() 
+    {
+        return top == null;
+    }
+
+    // Method to display the stack
+    public void display() 
+    {
+        if (top == null) {
+            System.out.println("Stack is empty.");
+            return;
+        }
+        Node current = top;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) 
+    {
+        Stack stack = new Stack();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        System.out.println("Stack after push operations:");
+        stack.display(); // Output: 40 30 20 10
+
+        System.out.println("Top element (peek): " + stack.peek()); // Output: 40
+
+        System.out.println("Popped element: " + stack.pop()); // Output: 40
+        stack.display(); // Output: 30 20 10
+    }
+}
