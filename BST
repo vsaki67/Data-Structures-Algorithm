@@ -1,0 +1,116 @@
+class BinarySearchTree {
+    // Node structure
+    static class Node {
+        int value;
+        Node left, right;
+
+        // Constructor
+        public Node(int value) {
+            this.value = value;
+            left = right = null;
+        }
+    }
+
+    // Root of the tree
+    private Node root;
+
+    public BinarySearchTree() {
+        root = null;
+    }
+
+    // Iterative Insert method
+    public void insert(int value) {
+        Node newNode = new Node(value);
+        if (root == null) {
+            root = newNode;
+            return;
+        }
+
+        Node current = root;
+        Node parent = null;
+
+        // Find the correct place to insert the node
+        while (current != null) {
+            parent = current;
+            if (value < current.value) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        // Insert the new node
+        if (value < parent.value) {
+            parent.left = newNode;
+        } else {
+            parent.right = newNode;
+        }
+    }
+
+    // Iterative Search method
+    public boolean search(int value) {
+        Node current = root;
+
+        while (current != null) {
+            if (current.value == value) {
+                return true;
+            } else if (value < current.value) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        return false; // Not found
+    }
+
+    // Inorder Traversal (without recursion)
+    public void inorder() {
+        if (root == null) {
+            return;
+        }
+
+        Node current = root;
+        Node prev = null;
+        Node stack[] = new Node[100]; // Stack for iterative traversal
+        int top = -1;
+
+        // Traverse the tree
+        while (current != null || top != -1) {
+            // Reach the leftmost node of the current node
+            while (current != null) {
+                stack[++top] = current;
+                current = current.left;
+            }
+
+            // Pop the top element from stack and print it
+            current = stack[top--];
+            System.out.print(current.value + " ");
+
+            // Move to the right node
+            current = current.right;
+        }
+    }
+
+    // Main method to test the tree
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+
+        // Insert nodes
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+
+        // Search for a value
+        System.out.println("Search 40: " + tree.search(40)); // Should return true
+        System.out.println("Search 100: " + tree.search(100)); // Should return false
+
+        // Inorder traversal
+        System.out.print("Inorder traversal: ");
+        tree.inorder();  // Output should be: 20 30 40 50 60 70 80
+    }
+}
