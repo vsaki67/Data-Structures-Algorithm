@@ -1,0 +1,66 @@
+import java.util.Arrays;
+
+public class FloydWarshall 
+{
+    final static int INF = 99999; // Represents infinity (no direct path)
+
+    public static void floydWarshall(int[][] graph) 
+    {
+        int V = graph.length;
+        int[][] dist = new int[V][V];
+
+        // Copy input graph to distance matrix
+        for (int i = 0; i < V; i++)
+            dist[i] = Arrays.copyOf(graph[i], V);
+
+        // Floyd-Warshall Algorithm
+        for (int k = 0; k < V; k++) {
+            for (int i = 0; i < V; i++) {
+                for (int j = 0; j < V; j++) {
+                    // Update dist[i][j] if a shorter path is found via node k
+                    if (dist[i][k] != INF && dist[k][j] != INF && dist[i][k] + dist[k][j] < dist[i][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        // Print the shortest path matrix
+        printSolution(dist);
+    }
+
+    public static void printSolution(int[][] dist) 
+    {
+        int V = dist.length;
+        System.out.println("=== Shortest Distance Matrix ===");
+        System.out.print("   ");
+        for (int i = 0; i < V; i++) {
+            System.out.printf("%4d", i);
+        }
+        System.out.println("\n--------------------------------");
+
+        for (int i = 0; i < V; i++) {
+            System.out.printf("%2d |", i);
+            for (int j = 0; j < V; j++) {
+                if (dist[i][j] == INF)
+                    System.out.print(" INF");
+                else
+                    System.out.printf("%4d", dist[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) 
+    {
+        // Example Graph (Adjacency Matrix)
+        int[][] graph = {
+            {0, 3, INF, INF},
+            {2, 0, INF, INF},
+            {INF, 7, 0, 1},
+            {6, INF, INF, 0}
+        };
+
+        floydWarshall(graph);
+    }
+}
